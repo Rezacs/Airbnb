@@ -1,0 +1,191 @@
+Cell #,Type,Primary role / action,Notes,First line preview,Execution count,Has output
+1,code,Visualization / plotting,"Imports: matplotlib, numpy, os, pandas, seaborn, sklearn | Tags: outputs results",import numpy as np,3,TRUE
+2,code,Load dataset(s),Comment: data from csv files is imported to  pandas data frames | Tags: outputs results,# data from csv files is imported to pandas data frames,4,TRUE
+3,code,Data exploration / inspection,Tags: outputs results,print(data_train_org.shape),5,TRUE
+4,code,Model training / inference,Tags: outputs results,"data_train, data_test = train_test_split(data_train_org, test_size=0.2)",6,TRUE
+5,code,Data exploration / inspection,Comment: Removing the date_first_booking column from data_train and data_test | Tags: outputs results,# Removing the date_first_booking column from data_train and data_test,7,TRUE
+6,code,Data exploration / inspection,Comment: replacing gender and age values which are not present to Nan | Tags: outputs results,#replacing gender and age values which are not present to Nan,8,TRUE
+7,markdown,Section heading / narrative,Heading: Missing Data,# Missing Data,,
+8,code,Load dataset(s),Tags: outputs results,train_users = pd.read_csv('../data/train_users_2.csv'),10,TRUE
+9,code,Data exploration / inspection,,df.head(10),11,TRUE
+10,code,Miscellaneous,,"df['gender'].unique(), df['first_browser'].unique()",12,TRUE
+11,code,Empty code cell,No code present,,,FALSE
+12,code,Data cleaning / type fixes,,"df['gender'] = df['gender'].replace('-unknown-', np.nan)",,FALSE
+13,code,Data exploration / inspection,,df.isnull().sum(),,TRUE
+14,code,Data cleaning / type fixes,,"df.drop('date_first_booking', axis=1, inplace=True)",,FALSE
+15,code,Data exploration / inspection,,df.isnull().sum(),,TRUE
+16,markdown,Section heading / narrative,Heading: User's Age,# User's Age,,
+17,code,Data exploration / inspection,,df.age.describe(),,TRUE
+18,code,Data exploration / inspection,,df.loc[df['age'] > 1000]['age'].describe(),,TRUE
+19,code,Data exploration / inspection,,df.loc[df['age'] < 18]['age'].describe(),,TRUE
+20,code,Miscellaneous,,df_with_year = df['age'] > 1000,,FALSE
+21,code,Data exploration / inspection,,df.age.describe(),,TRUE
+22,code,Miscellaneous,,"df.loc[df.age > 95, 'age'] = np.nan",,FALSE
+23,code,Data exploration / inspection,,df['age'].describe(),,TRUE
+24,code,Data cleaning / type fixes,,"plt.figure(figsize=(12,6))",,TRUE
+25,markdown,Narrative / explanation,"First sentence: As expected, the most common age of Airbnb users is between 25 and 40.","As expected, the most common age of Airbnb users is between 25 and 40.",,
+26,markdown,Section heading / narrative,Heading: User's Gender,# User's Gender,,
+27,code,Data exploration / inspection,,df.head(),,TRUE
+28,code,Data cleaning / type fixes,,"plt.figure(figsize=(12,6))",,TRUE
+29,markdown,Narrative / explanation,First sentence: Approx.,Approx. 45% of users' gender were not presented. And there is no significant difference between female and male users on Airbnb's platform.,,
+30,markdown,Section heading / narrative,Heading: Travel Destination Country,# Travel Destination Country,,
+31,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+32,markdown,Narrative / explanation,First sentence: Nearly 60% of users did not book any destination (NDF).,"Nearly 60% of users did not book any destination (NDF). The most booked country is the US (nearly 30% of all users booked US), given all...",,
+33,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+34,markdown,Narrative / explanation,First sentence: There were no significant age difference among users who book difference destinations.,"There were no significant age difference among users who book difference destinations. However, users who booked Great Britain tend to be...",,
+35,markdown,Section heading / narrative,Heading: User's Signup,# User's Signup,,
+36,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+37,markdown,Narrative / explanation,"First sentence: Over 70% of all bookers in the data used basic email method to sign up with Airbnb, and less than 30% of bookers used th","Over 70% of all bookers in the data used basic email method to sign up with Airbnb, and less than 30% of bookers used their facebook...",,
+38,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+39,markdown,Narrative / explanation,"First sentence: For users who made booking at least once, most of them signed up with Airbnb through basic email method, no matter which","For users who made booking at least once, most of them signed up with Airbnb through basic email method, no matter which country they...",,
+40,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+41,markdown,Narrative / explanation,"First sentence: Over 85% of all bookers in the data set signed up on Airbnb's website, over 10% of all bookers signed up with iOs.","Over 85% of all bookers in the data set signed up on Airbnb's website, over 10% of all bookers signed up with iOs.",,
+42,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+43,markdown,Narrative / explanation,First sentence: US bookers have more variety of sign up apps than bookers in other countries.,"US bookers have more variety of sign up apps than bookers in other countries. To see more clearer, we remove the US.",,
+44,code,Visualization / plotting,,df_without_NDF_US = df_without_NDF[df_without_NDF['country_destination']!='US'],,TRUE
+45,markdown,Narrative / explanation,First sentence: Signing up through Airbnb website is the most common sign up on booking every destination country in the data.,Signing up through Airbnb website is the most common sign up on booking every destination country in the data.,,
+46,markdown,Section heading / narrative,Heading: Affiliate,# Affiliate,,
+47,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+48,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+49,markdown,Narrative / explanation,First sentence: Let's remove the US again.,Let's remove the US again.,,
+50,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+51,code,Visualization / plotting,,"plt.figure(figsize=(20,6))",,TRUE
+52,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+53,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+54,markdown,Narrative / explanation,First sentence: Approx.,"Approx. 65% of bookers signed up directly, without any affiliate program. And over 23% of bookers signed up through Google affiliate...",,
+55,markdown,Section heading / narrative,Heading: First,# First,,
+56,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+57,code,Visualization / plotting,,"plt.figure(figsize=(18,6))",,TRUE
+58,code,Visualization / plotting,,"plt.figure(figsize=(18,6))",,TRUE
+59,markdown,Narrative / explanation,First sentence: Around 60% of bookers use Apple devices.,Around 60% of bookers use Apple devices. Particularly in the US.,,
+60,code,Visualization / plotting,,"plt.figure(figsize=(18,6))",,TRUE
+61,markdown,Narrative / explanation,"First sentence: However, outside of the US, Windows descktop is far more common, in particular, there was little usage difference betwee","However, outside of the US, Windows descktop is far more common, in particular, there was little usage difference between Mac desktop and...",,
+62,code,Visualization / plotting,,"plt.figure(figsize=(20,6))",,TRUE
+63,markdown,Narrative / explanation,First sentence: Almost 30% of bookers in the data used Chrome browser.,Almost 30% of bookers in the data used Chrome browser.,,
+64,markdown,Section heading / narrative,Heading: User's Prefferred Language,# User's Prefferred Language,,
+65,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+66,markdown,Narrative / explanation,"First sentence: Vast majority of the bookers' language preference is English, there is no surprise given most of the users in the data s","Vast majority of the bookers' language preference is English, there is no surprise given most of the users in the data set are from the US.",,
+67,code,Visualization / plotting,,"plt.figure(figsize=(12,6))",,TRUE
+68,markdown,Narrative / explanation,"First sentence: Without the US, English is still the most preferred langauge, interestingly, Chinese is the 2nd most preferred languages","Without the US, English is still the most preferred langauge, interestingly, Chinese is the 2nd most preferred languages for bookers.",,
+69,markdown,Section heading / narrative,Heading: Dates,# Dates,,
+70,code,Notebook magic / shell command,Comment: df_without_NDF['date_account_created_day'] = df_without_NDF.date_account_created.dt.weekday_name,df_without_NDF['date_account_created'] = pd.to_datetime(df_without_NDF['date_account_created']),,TRUE
+71,code,Data exploration / inspection,,df_without_NDF.head(),,TRUE
+72,code,Data exploration / inspection,,"plt.figure(figsize=(12,6))",,TRUE
+73,code,Data exploration / inspection,,"plt.figure(figsize=(12,6))",,TRUE
+74,markdown,Narrative / explanation,"First sentence: The pattern looks similar between date account created and date first active, as it shoule be.","The pattern looks similar between date account created and date first active, as it shoule be. From these two plots, we can see how fast...",,
+75,code,Data exploration / inspection,,"df_2013 = df_without_NDF[df_without_NDF['timestamp_first_active'] > pd.to_datetime(20130101, format='%Y%m%d')]",,TRUE
+76,markdown,Narrative / explanation,"First sentence: When dive into 2013, we see that there were several peak months for Airbnb users such as July, August and October, and D","When dive into 2013, we see that there were several peak months for Airbnb users such as July, August and October, and December is the...",,
+77,markdown,Section heading / narrative,Heading: User Session Exploration,# User Session Exploration,,
+78,code,Load dataset(s),Tags: outputs results,sessions = pd.read_csv('../data/sessions.csv'),,TRUE
+79,markdown,Narrative / explanation,"First sentence: There are not many features in sessions data set, we can explore them one by one.","There are not many features in sessions data set, we can explore them one by one.",,
+80,code,Data exploration / inspection,,sessions.isnull().sum(),,TRUE
+81,code,Data exploration / inspection,,sessions.head(),,TRUE
+82,markdown,Section heading / narrative,Heading: Action Type,# Action Type,,
+83,code,Miscellaneous,,sessions.action_type.unique(),,TRUE
+84,markdown,Narrative / explanation,"First sentence: We have ""NaN"" and ""unknown"" in the action type.","We have ""NaN"" and ""unknown"" in the action type. So we will change ""unknown"" to ""NaN"".",,
+85,code,Data cleaning / type fixes,,"sessions['action_type'] = sessions['action_type'].replace('-unknown-', np.nan)",,FALSE
+86,code,Data exploration / inspection,,sessions.action_type.value_counts(),,TRUE
+87,markdown,Section heading / narrative,Heading: Action,# Action,,
+88,code,Data exploration / inspection,,sessions.action.value_counts().head(10),,TRUE
+89,markdown,Section heading / narrative,Heading: Action detail,# Action detail,,
+90,code,Data exploration / inspection,,sessions.action_detail.value_counts().head(10),,TRUE
+91,markdown,Section heading / narrative,Heading: Device type,# Device type,,
+92,code,Visualization / plotting,,"plt.figure(figsize=(18,6))",,TRUE
+93,markdown,Narrative / explanation,First sentence: This affirms the previous discovery about users.,This affirms the previous discovery about users. The most common device type among Airbnb users are Apple products.,,
+94,markdown,Section heading / narrative,Heading: Sessions of Users who had made bookings,# Sessions of Users who had made bookings,,
+95,markdown,Narrative / explanation,"First sentence: From the previous analysis, we know which users had made bookings through Airbnb, so we want to explore these bookers se","From the previous analysis, we know which users had made bookings through Airbnb, so we want to explore these bookers session data. Are...",,
+96,code,Data exploration / inspection,,df_without_NDF.head(),,TRUE
+97,code,Data exploration / inspection,,sessions.head(),,TRUE
+98,code,Data exploration / inspection,"Comment: ✅ aggregate sessions first, then merge (much smaller)","# ✅ aggregate sessions first, then merge (much smaller)",,FALSE
+99,markdown,Section heading / narrative,Heading: Bookers action type,# Bookers action type,,
+100,code,Data exploration / inspection,,"sessions[""action_type""].value_counts()",,TRUE
+101,code,Data exploration / inspection,,"sessions[""action""].value_counts().head(10)",,TRUE
+102,markdown,Narrative / explanation,"First sentence: Unfortunately, there was no significant difference in actions between bookers and all users.","Unfortunately, there was no significant difference in actions between bookers and all users.",,
+103,markdown,Section heading / narrative,Heading: Data Preprocessing,# Data Preprocessing,,
+104,code,Visualization / plotting,"Imports: matplotlib, numpy, pandas, seaborn",import pandas as pd,,FALSE
+105,code,Load dataset(s),,train_users = pd.read_csv('../data/train_users_2.csv'),,FALSE
+106,markdown,Section heading / narrative,Heading: Date time features,# Date time features,,
+107,markdown,Narrative / explanation,"First sentence: Cast date time column to property date time format, Split dates into day, week, month, year, Get the difference(time lag","Cast date time column to property date time format, Split dates into day, week, month, year, Get the difference(time lag) between the...",,
+108,code,Data exploration / inspection,Comment: let pandas infer the format (handles both YYYYMMDDHHMMSS and YYYY-MM-DD),df['date_account_created'] = pd.to_datetime(df['date_account_created']),,FALSE
+109,code,Data exploration / inspection,,df.columns,,TRUE
+110,markdown,Section heading / narrative,Heading: Age features,# Age features,,
+111,markdown,Narrative / explanation,"First sentence: Convert year to age, set limits to age, and fill NaNs with -1.","Convert year to age, set limits to age, and fill NaNs with -1.",,
+112,code,Data cleaning / type fixes,Comment: ✅ safer way without inplace,df_with_year = df['age'] > 1000,,FALSE
+113,markdown,Section heading / narrative,Heading: User session action features,# User session action features,,
+114,markdown,Narrative / explanation,"First sentence: Group by user_id, count the number of times an action, action type and action detail is made by each user.","Group by user_id, count the number of times an action, action type and action detail is made by each user. Doing groupby.agg(len) is...",,
+115,code,Load dataset(s),Comment: counts | Tags: loops,"sessions = pd.read_csv(""../data/sessions.csv"")",,FALSE
+116,code,Empty code cell,No code present,,,FALSE
+117,code,Miscellaneous,Imports: missingno,import missingno as msno,60,TRUE
+118,code,Data exploration / inspection,,sns.set_style('ticks'),61,TRUE
+119,code,Data exploration / inspection,,sns.set_style('ticks'),62,TRUE
+120,code,Data exploration / inspection,,sns.set_style('ticks'),63,TRUE
+121,code,Data cleaning / type fixes,Comment: new version : | Tags: loops,sns.set_style('ticks'),64,TRUE
+122,code,Data cleaning / type fixes,,sns.set_style('ticks'),65,TRUE
+123,code,Visualization / plotting,,data_train['date_account_created_new'] = pd.to_datetime(data_train['date_account_created']),66,TRUE
+124,code,Data exploration / inspection,,sns.set_style('ticks'),67,TRUE
+125,code,Data exploration / inspection,,sns.set_style('ticks'),68,TRUE
+126,code,Visualization / plotting,,sns.set_style('ticks'),69,TRUE
+127,code,Visualization / plotting,,sns.set_style('ticks'),70,TRUE
+128,code,Data exploration / inspection,,sns.set_style('ticks'),71,TRUE
+129,code,Visualization / plotting,,sns.set_style('ticks'),72,TRUE
+130,code,Data exploration / inspection,,sns.set_style('ticks'),73,TRUE
+131,code,Data exploration / inspection,Imports: sklearn | Tags: outputs results,from sklearn.preprocessing import LabelEncoder,74,TRUE
+132,code,Data exploration / inspection,,df_all = data_train_copy,75,FALSE
+133,code,Data exploration / inspection,Tags: loops,for f in ohe_feats:,76,TRUE
+134,code,Miscellaneous,Imports: sklearn,from sklearn.manifold import TSNE,77,FALSE
+135,code,Visualization / plotting,"Imports: matplotlib, sklearn",%matplotlib inline,78,TRUE
+136,code,Visualization / plotting,"Imports: matplotlib, sklearn",from sklearn.manifold import TSNE,79,TRUE
+137,code,Empty code cell,No code present,,,FALSE
+138,code,Visualization / plotting,"Imports: matplotlib, numpy, pandas",import pandas as pd,2,FALSE
+139,code,Load dataset(s),Comment: Read the train and the test data | Tags: outputs results,# Read the train and the test data,92,TRUE
+140,code,Data cleaning / type fixes,,"train_users = train_users.drop(['date_first_booking'], axis=1)",4,FALSE
+141,code,Data cleaning / type fixes,"Comment: Date is split into 3 parts as year, month and day in both test and train. These are added as","# Date is split into 3 parts as year, month and day in both test and train. These are added as",5,FALSE
+142,code,Data exploration / inspection,Comment: Replacing unknown values in gender with -1 and null values with -1,# Replacing unknown values in gender with -1 and null values with -1,6,FALSE
+143,code,Feature engineering / transforms,"Comment: Encoding Female with 0, Male with 1 and Other with 2 in both test and train data | Tags: loops","# Encoding Female with 0, Male with 1 and Other with 2 in both test and train data",7,FALSE
+144,code,Data exploration / inspection,"Comment: Finding valid values for gender and invalid values for gender | Tags: loops, outputs results",# Finding valid values for gender and invalid values for gender,9,TRUE
+145,code,Miscellaneous,Tags: loops,"for k, v in count_map.items():",11,FALSE
+146,code,Data exploration / inspection,,train_users.gender.describe(),12,TRUE
+147,code,Data exploration / inspection,"Comment: use Series.value_counts() | Tags: loops, outputs results","nan_gender_count = len(test_users.loc[test_users['gender'] == -1, 'gender'])",14,TRUE
+148,code,Data exploration / inspection,,train_users['age'].describe(),15,TRUE
+149,code,Miscellaneous,Comment: Replacing invalid age with NaN in test and train,# Replacing invalid age with NaN in test and train,16,FALSE
+150,code,Data exploration / inspection,Comment: Replace missing age with median,# Replace missing age with median,17,TRUE
+151,code,Feature engineering / transforms,Comment: Encoding the signup method for test | Tags: loops,# Encoding the signup method for test,18,FALSE
+152,code,Miscellaneous,Comment: Encoding the language in both train and test,# Encoding the language in both train and test,19,FALSE
+153,code,Feature engineering / transforms,Tags: loops,"language_encoding = {'en' : 1 ,",20,FALSE
+154,code,Feature engineering / transforms,Comment: Encoding for affiliate_channel | Tags: loops,# Encoding for affiliate_channel,21,FALSE
+155,code,Feature engineering / transforms,Comment: Encoding for affiliate_provider | Tags: loops,# Encoding for affiliate_provider,22,FALSE
+156,code,Data exploration / inspection,Comment: Encoding for first_affiliate_tracked | Tags: loops,# Encoding for first_affiliate_tracked,23,FALSE
+157,code,Feature engineering / transforms,Comment: Encoding for signup_app | Tags: loops,# Encoding for signup_app,24,FALSE
+158,code,Feature engineering / transforms,Comment: Encoding for first_device_type | Tags: loops,# Encoding for first_device_type,25,FALSE
+159,code,Feature engineering / transforms,Comment: Encoding for first_browser | Tags: loops,# Encoding for first_browser,26,FALSE
+160,code,Load dataset(s),Comment: Reading sessions data,# Reading sessions data,27,FALSE
+161,code,Data exploration / inspection,Comment: frequency of each user_id in sessions data,# frequency of each user_id in sessions data,31,TRUE
+162,code,Data cleaning / type fixes,Comment: Updating session_count for users present in the train data | Tags: loops,# Updating session_count for users present in the train data,32,FALSE
+163,code,Miscellaneous,,print (train_users['session_count'].max()),33,TRUE
+164,code,Feature engineering / transforms,Comment: Encding for country_destination | Tags: loops,# Encding for country_destination,34,FALSE
+165,code,Data exploration / inspection,Comment: print train_users_merge.head() | Imports: sklearn,#print train_users_merge.head(),38,FALSE
+166,code,Data exploration / inspection,Tags: outputs results,train_users['country_destination'] = labels_df,39,TRUE
+167,code,Data exploration / inspection,Tags: outputs results,train_users_merge['country_destination'] = labels_df,40,TRUE
+168,code,Save outputs / artifacts,,"train_users.to_csv('train_users_wo_merge_scale.csv',index=False)",41,FALSE
+169,code,Data exploration / inspection,Comment: # 1. Recreate your merged datasets,# # 1. Recreate your merged datasets,50,FALSE
+170,code,Define functions / classes,,"def folds_to_split(data,targets,train,test):",51,FALSE
+171,markdown,Section heading / narrative,Heading: Creating the NDCG Scorer,# Creating the NDCG Scorer,,
+172,code,Model training / inference,"Comment: Reference Kaggle | Imports: sklearn | Tags: loops, outputs results",# Reference Kaggle,53,TRUE
+173,code,Data exploration / inspection,Comment: print train_users.head(),#print train_users.head(),54,FALSE
+174,markdown,Section heading / narrative,Heading: Modeling,# Modeling,,
+175,code,Miscellaneous,Imports: sklearn,from sklearn.naive_bayes import GaussianNB,59,FALSE
+176,code,Model training / inference,Imports: sklearn,from sklearn.naive_bayes import GaussianNB,62,TRUE
+177,code,Miscellaneous,,prob_arr = gnb.predict_proba(te_data),63,FALSE
+178,code,Data exploration / inspection,"Comment: Convert labels into one-hot | Imports: sklearn | Tags: decorators, outputs results",from sklearn.metrics import ndcg_score,73,TRUE
+179,code,Data exploration / inspection,"Comment: Convert ground truth to numpy | Tags: decorators, outputs results",# Convert ground truth to numpy,71,TRUE
+180,code,Miscellaneous,Tags: loops,"print (""NDCG Score for Naive Bayes:"")",76,TRUE
+181,code,Miscellaneous,Tags: loops,"print (""Accuracy Score for Naive Bayes:"")",78,TRUE
+182,markdown,Section heading / narrative,Heading: Part 2,# Part 2,,
+183,code,Data exploration / inspection,"Comment: convert labels to one-hot for ndcg_score | Imports: sklearn | Tags: loops, outputs results",from sklearn.model_selection import KFold,80,TRUE
+184,markdown,Section heading / narrative,Heading: Part 3,# Part 3,,
+185,code,Data exploration / inspection,Imports: sklearn,from sklearn import preprocessing,82,TRUE
+186,code,Model training / inference,"Comment: All possible classes (needed for one-hot binarization) | Imports: numpy, pandas, sklearn | Tags: loops, outputs results",import pandas as pd,86,TRUE
+187,code,Notebook magic / shell command,Comment: !pip freeze > requirements.txt,# !pip freeze > requirements.txt,91,FALSE
+188,code,Notebook magic / shell command,,!where python,89,TRUE
+189,code,Miscellaneous,Imports: sys | Tags: outputs results,import sys,90,TRUE
+190,code,Empty code cell,No code present,,,FALSE
